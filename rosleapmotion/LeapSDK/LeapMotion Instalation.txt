@@ -1,0 +1,25 @@
+Leap is still set up for upstart, and the recent move from upstart to systemd make some packages like Leap failed to install.
+
+Follow the steps below:
+
+sudo nano /lib/systemd/system/leapd.service
+
+
+leapd.service file:
+
+[Unit]
+Description=LeapMotion Daemon
+After=syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/leapd
+
+[Install]
+WantedBy=multi-user.target
+
+
+sudo ln -s /lib/systemd/system/leapd.service /etc/systemd/system/leapd.service
+sudo systemctl daemon-reload
+sudo dpkg --install Leap-2.3.1+31549-x64.deb
+

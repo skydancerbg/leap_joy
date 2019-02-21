@@ -1,0 +1,16 @@
+<launch>
+
+  <node name="eddiebot_joy" pkg="eddiebot_joy" type="eddiebot_joy">
+    <remap from="eddiebot_joy/cmd_vel" to="cmd_vel" />
+    <remap from="eddiebot_joy/emergency_stop" to="emergency_stop" />
+    <remap from="eddiebot_joy/CPRMoverCommands" to="CPRMoverCommands" />
+    <remap from="eddiebot_joy/CPRMoverJointVel" to="CPRMoverJointVel" />
+  </node>
+
+  <node name="joystick" pkg="joy" type="joy_node">
+    <param name="dev" value="/dev/input/js0"/>
+  </node>
+
+
+
+</launch>
